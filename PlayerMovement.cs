@@ -111,3 +111,4 @@ public class PlayerMovementScript : MonoBehaviour
          _runSound.Stop();
      }
  }
+  void Jumping()
