@@ -21,7 +21,10 @@ This is a basic Player Movement system built in Unity, designed to provide smoot
 
 ---
 
- 
+ ### 💥3D Player
 ![image](https://github.com/user-attachments/assets/811cc7f5-5698-4bcc-b1d1-497fa31739e5)
+### 🧩2D Player
+![image](https://github.com/user-attachments/assets/782a869e-0c2c-4b68-9b31-21e1a26a2698)
+
 
  
