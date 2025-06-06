@@ -86,29 +86,59 @@ public class PlayerMovementScript : MonoBehaviour
             else
             {
                 deaccelerationSpeed = 0.1f;
-            }
         }
     }
- void Jumping()
- {
-     if (Input.GetKeyDown(KeyCode.Space) && grounded)
-     {
-         if (CanJumpOverObstacle()) // Check if there is an obstacle
-         {
-             rb.AddForce(Vector3.up * jumpForce); // Jump over the obstacle
-         }
-         else
-         {
-             rb.AddRelativeForce(Vector3.up * jumpForce); // Normal jump
-         }
+    
+    // Add any missing closing braces above if you have more methods or logic.
+}
 
-         if (_jumpSound)
-             _jumpSound.Play();
-         else
-             print("Missing jump sound.");
+    void Jumping()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        {
+            if (CanJumpOverObstacle()) // Check if there is an obstacle
+            {
+                rb.AddForce(Vector3.up * jumpForce); // Jump over the obstacle
+            }
+            else
+            {
+                rb.AddRelativeForce(Vector3.up * jumpForce); // Normal jump
+            }
 
-         _walkSound.Stop();
-         _runSound.Stop();
-     }
- }
-  void Jumping()
+            if (_jumpSound)
+                _jumpSound.Play();
+            else
+                print("Missing jump sound.");
+
+            _walkSound.Stop();
+            _runSound.Stop();
+        }
+    }
+    bool CanJumpOverObstacle()
+    {
+        // Implement logic to check if there is an obstacle in front of the player
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 1.5f))
+        {
+            return true; // There is an obstacle
+        }
+        return false; // No obstacle
+    }
+    void RaycastForMeleeAttacks()
+    {
+       
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = true; 
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Ladder"))
+        {
+            isClimbing = false;  
+        }
+    }
